@@ -9,8 +9,6 @@ bcrypt = Bcrypt(app)
 
 @app.route('/')
 def login_reg():
-    # if "user_id" in session:
-    #     return redirect("/recipes")
     return render_template("index.html")
 
 @app.route('/users/register', methods=["POST"])
@@ -46,6 +44,7 @@ def login():
     return redirect('/recipes')
     
 
-@app.route('/recipes')
-def dashboard():
-    return render_template("recipes.html")
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/')
